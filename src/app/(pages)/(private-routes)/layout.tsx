@@ -11,7 +11,6 @@ export default async function PrivateRoutesLayout({
   children,
 }: PrivateRoutesLayoutProps) {
   const session = await auth();
-  console.log('🚀 ~ session:', session);
 
   if (!session?.access) {
     redirect('/auth/login');

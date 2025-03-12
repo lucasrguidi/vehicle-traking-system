@@ -30,6 +30,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import useVehicles from './hooks/use-vehicles';
 
 const tableData = [
   {
@@ -120,6 +121,9 @@ const tableData = [
 ];
 
 export default function VehiclesPage() {
+  const { vehicles } = useVehicles();
+  console.log('🚀 ~ VehiclesPage ~ vehicles:', vehicles);
+
   return (
     <div className="bg-background h-full overflow-auto">
       <header>
