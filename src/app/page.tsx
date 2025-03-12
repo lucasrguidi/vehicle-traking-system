@@ -1,10 +1,3 @@
-import { Button, HStack } from '@chakra-ui/react';
-
-export default function HomePage() {
-  return (
-    <HStack>
-      <Button>Click me</Button>
-      <Button>Click me</Button>
-    </HStack>
-  );
+export default async function HomePage() {
+  return <h1>Home</h1>;
 }

@@ -1,7 +1,10 @@
-import { Provider } from '@/components/ui/provider';
+import { Toaster } from '@/components/ui/sonner';
 import type { Metadata } from 'next';
+import { SessionProvider } from 'next-auth/react';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import { auth } from './lib/auth';
+import { QueryProvider } from './providers/query-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -18,17 +21,21 @@ export const metadata: Metadata = {
   description: 'Vehicle Traking System using Next.js',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-Br" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}
       >
-        <Provider>{children}</Provider>
+        <SessionProvider session={session}>
+          <QueryProvider>{children}</QueryProvider>
+        </SessionProvider>
+        <Toaster />
       </body>
     </html>
   );
