@@ -9,6 +9,7 @@ export default async function PublicRoutesLayout({
   children,
 }: PublicRoutesLayoutProps) {
   const session = await auth();
+  console.log('🚀 ~ session:', session);
 
   if (session?.access) {
     redirect('/dashboard');

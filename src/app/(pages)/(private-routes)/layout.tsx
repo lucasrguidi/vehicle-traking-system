@@ -1,5 +1,7 @@
 import { auth } from '@/app/lib/auth';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { redirect } from 'next/navigation';
+import AppSidebar from './_components/app-sidebar';
 
 interface PrivateRoutesLayoutProps {
   children: React.ReactNode;
@@ -15,5 +17,14 @@ export default async function PrivateRoutesLayout({
     redirect('/auth/login');
   }
 
-  return children;
+  return (
+    <div className="min-h-screen">
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarInset className="flex-1 overflow-hidden">
+          {children}
+        </SidebarInset>
+      </SidebarProvider>
+    </div>
+  );
 }

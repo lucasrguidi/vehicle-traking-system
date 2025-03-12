@@ -21,7 +21,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-export default function SignInForm() {
+export default function LoginForm() {
   const router = useRouter();
 
   const { mutate: login, isPending } = useMutation({
