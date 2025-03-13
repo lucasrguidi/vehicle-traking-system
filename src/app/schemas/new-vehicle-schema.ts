@@ -11,4 +11,6 @@ export const newVehicleSchema = z.object({
     .trim()
     .min(1, 'Código é obrigatório')
     .max(50, 'Máximo de 50 caractéres'),
+  is_active: z.boolean().default(true),
+  is_online: z.boolean().default(true),
 });

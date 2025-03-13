@@ -3,4 +3,5 @@ export const API_ENDPOINTS = {
   LOGIN: `${process.env.NEXT_PUBLIC_API_URL}/auth/login/`,
   VALIDATE_TOKEN: `${process.env.NEXT_PUBLIC_API_URL}/auth/me/`,
   VEHICLES: `${process.env.NEXT_PUBLIC_API_URL}/vehicles/`,
+  DASHBOARD_TOTAL_ATIVOS: `${process.env.NEXT_PUBLIC_API_URL}/dashboard/total_ativos/`,
 };

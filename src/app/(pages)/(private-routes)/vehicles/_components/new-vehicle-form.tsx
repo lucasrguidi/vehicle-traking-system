@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 
 import { newVehicleSchema } from '@/app/schemas/new-vehicle-schema';
 import { LoadingSpinner } from '@/components/custom/loading-spinner';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   Form,
   FormControl,
@@ -30,11 +31,14 @@ export default function NewVehicleForm({ toggleDialog }: NewVehicleFormProps) {
     defaultValues: {
       codigo: '',
       placa: '',
+      is_active: true,
+      is_online: true,
     },
   });
 
   async function onSubmit(values: z.infer<typeof newVehicleSchema>) {
     addVehicle(values);
+    console.log('🚀 ~ onSubmit ~ values:', values);
   }
 
   return (
@@ -63,6 +67,36 @@ export default function NewVehicleForm({ toggleDialog }: NewVehicleFormProps) {
                 <Input {...field} />
               </FormControl>
               <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="is_active"
+          render={({ field }) => (
+            <FormItem className="flex gap-2 items-center">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <FormLabel>Ativo</FormLabel>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="is_online"
+          render={({ field }) => (
+            <FormItem className="flex gap-2 items-center">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <FormLabel>Online</FormLabel>
             </FormItem>
           )}
         />
