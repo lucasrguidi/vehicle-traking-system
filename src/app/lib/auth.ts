@@ -21,6 +21,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               password: credentials.password,
             }),
           });
+          console.log('🚀 ~ authorize: ~ response:', response);
 
           if (!response.ok) {
             return null;
@@ -73,7 +74,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {
     strategy: 'jwt',
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.AUTH_SECRET,
 });
 
 async function verifyToken(token: string): Promise<boolean> {
