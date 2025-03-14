@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { newVehicleSchema } from '../schemas/new-vehicle-schema';
 import Vehicle from '../types/vehicle';
+import { editVehicleSchema } from '../schemas/edit-vehicle-schema';
 
 async function getVehicles(): Promise<Vehicle[] | undefined> {
   try {
@@ -60,7 +61,7 @@ async function updateVehicle({
   values,
 }: {
   id: string;
-  values: z.infer<typeof newVehicleSchema>;
+  values: z.infer<typeof editVehicleSchema>;
 }): Promise<Vehicle | undefined> {
   try {
     const response = await fetch(`/api/vehicles/${id}`, {

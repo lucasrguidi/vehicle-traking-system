@@ -1,5 +1,6 @@
 import { API_ENDPOINTS } from '@/app/constants/api-endpoints';
 import { auth } from '@/app/lib/auth';
+import { editVehicleSchema } from '@/app/schemas/edit-vehicle-schema';
 import { newVehicleSchema } from '@/app/schemas/new-vehicle-schema';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -25,7 +26,7 @@ export async function PUT(
     }
 
     const body = await request.json();
-    const validatedData = newVehicleSchema.parse(body);
+    const validatedData = editVehicleSchema.parse(body);
 
     const response = await fetch(`${API_ENDPOINTS.VEHICLES}${id}/`, {
       method: 'PUT',

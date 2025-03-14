@@ -21,7 +21,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               password: credentials.password,
             }),
           });
-          console.log('🚀 ~ authorize: ~ response:', response);
 
           if (!response.ok) {
             return null;

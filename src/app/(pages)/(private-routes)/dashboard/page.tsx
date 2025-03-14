@@ -1,16 +1,10 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { ChartConfig } from '@/components/ui/chart';
-import { Plus, Search } from 'lucide-react';
-import * as React from 'react';
-
-import { DateRange } from 'react-day-picker';
+import { Separator } from '@/components/ui/separator';
 import { ActiveVehiclesChart } from './_components/active-vehicles-chart';
 import { OnlineVehiclesChart } from './_components/online-vehicles-chart';
 import useActiveVehiclesChart from './hooks/use-active-vehicles-chart';
 import useOnlineVehiclesChart from './hooks/use-online-vehicles-chart';
-import { Separator } from '@/components/ui/separator';
 
 export default function DashboardPage() {
   const { totalVehicles, activeVehicles, inactiveVehicles } =

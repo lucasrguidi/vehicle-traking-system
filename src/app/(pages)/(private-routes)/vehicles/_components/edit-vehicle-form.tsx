@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useForm } from 'react-hook-form';
 
-import { newVehicleSchema } from '@/app/schemas/new-vehicle-schema';
 import Vehicle from '@/app/types/vehicle';
 import { LoadingSpinner } from '@/components/custom/loading-spinner';
 import {
@@ -18,6 +17,8 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import useVehicles from '../hooks/use-vehicles';
+import { editVehicleSchema } from '@/app/schemas/edit-vehicle-schema';
+import { Checkbox } from '@/components/ui/checkbox';
 
 interface EditVehicleFormProps {
   vehicle: Vehicle;
@@ -30,15 +31,17 @@ export default function EditVehicleForm({
 }: EditVehicleFormProps) {
   const { updateVehicle, isUpdatingVehicle } = useVehicles(toggleDialog);
 
-  const form = useForm<z.infer<typeof newVehicleSchema>>({
-    resolver: zodResolver(newVehicleSchema),
+  const form = useForm<z.infer<typeof editVehicleSchema>>({
+    resolver: zodResolver(editVehicleSchema),
     defaultValues: {
       codigo: vehicle.codigo,
       placa: vehicle.placa,
+      is_active: vehicle.is_active,
+      is_online: vehicle.is_online,
     },
   });
 
-  async function onSubmit(values: z.infer<typeof newVehicleSchema>) {
+  async function onSubmit(values: z.infer<typeof editVehicleSchema>) {
     updateVehicle({ id: vehicle.id.toString(), values });
   }
 
@@ -68,6 +71,36 @@ export default function EditVehicleForm({
                 <Input {...field} />
               </FormControl>
               <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="is_active"
+          render={({ field }) => (
+            <FormItem className="flex gap-2 items-center">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <FormLabel>Ativo</FormLabel>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="is_online"
+          render={({ field }) => (
+            <FormItem className="flex gap-2 items-center">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <FormLabel>Online</FormLabel>
             </FormItem>
           )}
         />
