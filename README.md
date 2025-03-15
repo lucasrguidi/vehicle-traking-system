@@ -102,16 +102,16 @@ Esse projeto se consiste em uma aplicação que é uma plataforma web que consom
 ## Screenshots
 
 **Tela de Login**
-![[Pasted image 20250315201528.png]]
+<img src="./public/Pasted%20image%2020250315201528.png" width="100%"/>
 
 **Tela de Dashboard**
-![[Pasted image 20250315201720.png]]
+<img src="./public/Pasted%20image%2020250315201720.png" width="100%"/>
 
 **Tela de CRUD de Veículos**
-![[Pasted image 20250315201747.png]]
+<img src="./public/Pasted%20image%2020250315201747.png" width="100%"/>
 
 **Tela de Rastreamento**
-![[Pasted image 20250315201805.png]]
+<img src="./public/Pasted%20image%2020250315201805.png" width="100%"/>
 
 ## Considerações Finais
 
