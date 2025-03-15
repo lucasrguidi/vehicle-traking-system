@@ -1,12 +1,15 @@
 'use client';
 import { getVehicles } from '@/app/services/vehicle-service';
-import { LoadingSpinner } from '@/components/custom/loading-spinner';
 import { useQuery } from '@tanstack/react-query';
 import NewVehicleDialog from './_components/new-vehicle-dialog';
 import VehiclesTable from './_components/vehicles-table';
 
 export default function VehiclesPage() {
-  const { data: vehicles } = useQuery({
+  const {
+    data: vehicles,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ['vehicles'],
     queryFn: getVehicles,
   });
@@ -32,8 +35,11 @@ export default function VehiclesPage() {
           <div className="relative overflow-hidden border rounded-lg">
             <div className="overflow-auto">
               <div className="min-w-[1000px]">
-                {!vehicles && <LoadingSpinner />}
-                {vehicles && <VehiclesTable vehicles={vehicles} />}
+                <VehiclesTable
+                  vehicles={vehicles || []}
+                  isLoading={isLoading}
+                  isError={isError}
+                />
               </div>
             </div>
           </div>
