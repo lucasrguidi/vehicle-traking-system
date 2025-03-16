@@ -2,6 +2,9 @@
 
 Esse projeto se consiste em uma aplicação que é uma plataforma web que consome uma API REST para gerenciar veículos, rastreamento, controle de acesso (autenticação JWT) e exibir um dashboard com métricas.
 
+## Veja o Sistema em Ação
+A aplicação está disponível para demonstração através da URL: [https://vehicle-traking-system.vercel.app](https://vehicle-traking-system.vercel.app). Neste ambiente, você pode explorar todas as funcionalidades implementadas, como a autenticação com JWT, o dashboard com KPIs atualizados em tempo real, o CRUD de veículos e a tela de rastreamento integrada com a Google Maps API. A URL de demonstração permite que você visualize o projeto em funcionamento sem a necessidade de configurar o ambiente local, proporcionando uma experiência demonstrativa prática da plataforma. Utilize o usuário `user02` e a senha `x20QL8M` para acessar o sistema e testar suas funcionalidades.
+
 ## Tecnologias Utilizadas
 
 - **Next.js 15**: Framework React para renderização do lado do servidor (SSR) e geração de sites estáticos (SSG).
